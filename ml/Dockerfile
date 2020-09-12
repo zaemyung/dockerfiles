@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:10.2-python3
+FROM zaemyung/cuda:latest
 
 LABEL maintainer="zaemyung@gmail.com"
 
