@@ -55,11 +55,6 @@ RUN wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b.tar.gz \
     && rm -rf tmux-3.1b \
     && rm -f tmux-3.1b.tar.gz
 
-RUN wget -O /tmp/python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
-    && mkdir -p /usr/src/python \
-    && tar -xJC /usr/src/python --strip-components=1 -f /tmp/python.tar.xz \
-    && rm /tmp/python.tar.xz
-
 RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tgz -O python.tgz \
     && tar -xvf python.tgz \
     && mv Python-* python \
