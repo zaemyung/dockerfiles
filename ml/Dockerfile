@@ -36,5 +36,10 @@ RUN pip3 install --no-cache-dir \
         torchvision \
         tqdm
 
-RUN pip3 install \
-        pytorch-ignite
+RUN pip3 install --no-cache-dir --no-index torch-scatter -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
+RUN pip3 install --no-cache-dir --no-index torch-sparse -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
+RUN pip3 install --no-cache-dir --no-index torch-cluster -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
+RUN pip3 install --no-cache-dir --no-index torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
+RUN pip3 install --no-cache-dir torch-geometric
+
+RUN pip3 install --no-cache-dir pytorch-lightning
