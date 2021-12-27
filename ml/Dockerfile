@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:10.2-python3
+FROM zaemyung/cuda:11.3-python3.9
 
 LABEL maintainer="zaemyung@gmail.com"
 
@@ -20,6 +20,7 @@ RUN pip3 install --no-cache-dir --upgrade \
         wheel
 
 RUN pip3 install --no-cache-dir \
+        altair \
         Cython \
         ipython \
         kaleido \
@@ -32,14 +33,25 @@ RUN pip3 install --no-cache-dir \
         scikit-learn \
         scipy \
         seaborn \
-        torch \
-        torchvision \
+        streamlit \
+        tensorflow \
         tqdm
 
-RUN pip3 install --no-cache-dir --no-index torch-scatter -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
-RUN pip3 install --no-cache-dir --no-index torch-sparse -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
-RUN pip3 install --no-cache-dir --no-index torch-cluster -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
-RUN pip3 install --no-cache-dir --no-index torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.7.0+cu102.html
-RUN pip3 install --no-cache-dir torch-geometric
+RUN pip3 install --no-cache-dir --no-index \
+        torch==1.10.1+cu113 \
+        torchvision==0.11.2+cu113 \
+        torchaudio==0.10.1+cu113 \
+        -f https://download.pytorch.org/whl/cu113/torch_stable.html
 
-RUN pip3 install --no-cache-dir pytorch-lightning
+RUN pip3 install --no-cache-dir --no-index \
+        torch-scatter \
+        torch-sparse \
+        torch-cluster \
+        torch-spline-conv \
+        torch-geometric \
+        -f https://data.pyg.org/whl/torch-1.10.1+cu113.html
+
+RUN pip3 install --no-cache-dir \
+        pytorch-lightning \
+        torchmetrics \
+        transformers
