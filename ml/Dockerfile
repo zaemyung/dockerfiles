@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:11.3-python3.9
+FROM zaemyung/cuda:11.3.1-python3.9
 
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
