@@ -44,7 +44,7 @@ RUN pip3 install --no-cache-dir --no-index \
         torchaudio==0.10.1+cu113 \
         -f https://download.pytorch.org/whl/cu113/torch_stable.html
 
-RUN pip3 install --no-cache-dir --no-index \
+RUN pip3 install --no-cache-dir \
         torch-scatter \
         torch-sparse \
         torch-cluster \
