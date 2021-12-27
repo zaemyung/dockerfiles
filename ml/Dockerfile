@@ -1,6 +1,7 @@
 FROM zaemyung/cuda:11.3-python3.9
 
-LABEL maintainer="zaemyung@gmail.com"
+LABEL maintainer="zaemyung@gmail.com" \
+      org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
 
 ENV LANG=C.UTF-8
 ENV SHELL=/bin/bash
