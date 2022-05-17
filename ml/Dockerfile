@@ -8,8 +8,6 @@ ENV SHELL=/bin/bash
 
 ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
-RUN sed -i "s/archive\.ubuntu\.com/mirror\.kakao\.com/g" /etc/apt/sources.list
-
 RUN apt-get update && apt-get install -y \
         libblas-dev \
         liblapack-dev \
@@ -23,6 +21,7 @@ RUN pip3 install --no-cache-dir --upgrade \
 RUN pip3 install --no-cache-dir \
         altair \
         Cython \
+        htbuilder \
         ipython \
         kaleido \
         matplotlib \
@@ -36,13 +35,14 @@ RUN pip3 install --no-cache-dir \
         seaborn \
         streamlit \
         tensorflow \
-        tqdm
+        tqdm \
+        wandb
 
-RUN pip3 install --no-cache-dir --no-index \
-        torch==1.10.1+cu113 \
-        torchvision==0.11.2+cu113 \
-        torchaudio==0.10.1+cu113 \
-        -f https://download.pytorch.org/whl/cu113/torch_stable.html
+RUN pip3 install --no-cache-dir \
+        torch \
+        torchvision \
+        torchaudio \
+        -f https://download.pytorch.org/whl/cu113
 
 RUN pip3 install --no-cache-dir \
         torch-scatter \
@@ -50,9 +50,18 @@ RUN pip3 install --no-cache-dir \
         torch-cluster \
         torch-spline-conv \
         torch-geometric \
-        -f https://data.pyg.org/whl/torch-1.10.1+cu113.html
+        -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
 
 RUN pip3 install --no-cache-dir \
         pytorch-lightning \
         torchmetrics \
         transformers
+
+RUN pip3 install --no-cache-dir \
+        datasets \
+        nltk \
+        rouge_score \
+        sacrebleu \
+        sentencepiece \
+        sentsplit \
+        spacy

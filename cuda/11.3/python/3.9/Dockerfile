@@ -3,12 +3,10 @@ FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
 
-ENV PYTHON_VERSION 3.9.9
-ENV CMAKE_VERSION 3.22.1
+ENV PYTHON_VERSION 3.9.12
+ENV CMAKE_VERSION 3.23.1
 ENV TMUX_VERSION 3.2a
 ENV LANG=C.UTF-8
-
-RUN sed -i "s/archive\.ubuntu\.com/mirror\.kakao\.com/g" /etc/apt/sources.list
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         curl \
@@ -58,27 +56,33 @@ RUN wget https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${T
     && rm -rf tmux-${TMUX_VERSION} \
     && rm -f tmux-${TMUX_VERSION}.tar.gz
 
-RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-${PYTHON_VERSION}.tgz -O python.tgz \
-    && tar -xvf python.tgz \
-    && mv Python-* python \
-    && cd python \
+RUN wget -O /tmp/python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
+    && mkdir -p /usr/src/python \
+    && tar -xJC /usr/src/python --strip-components=1 -f /tmp/python.tar.xz \
+    && rm /tmp/python.tar.xz
+
+RUN cd /usr/src/python \
     && ./configure \
         --build="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
         --enable-loadable-sqlite-extensions \
         --enable-optimizations \
         --enable-option-checking=fatal \
         --enable-shared \
+        --with-lto \
         --with-system-expat \
         --with-system-ffi \
         --without-ensurepip \
     && make -j "$(nproc)" \
     && make install \
-    && cd .. \
     && ldconfig \
-    && rm -rf python*
+    && rm -rf /usr/src/python
 
-RUN python3 -m venv venv
+RUN cd /usr/local/bin \
+    && ln -s idle3 idle \
+    && ln -s pydoc3 pydoc \
+    && ln -s python3 python \
+    && ln -s python3-config python-config
 
-ENV PATH=/venv/bin:$PATH
-
-RUN curl https://bootstrap.pypa.io/get-pip.py | python
+RUN wget -O /tmp/get-pip.py "https://bootstrap.pypa.io/get-pip.py" \
+    && python /tmp/get-pip.py --no-cache-dir \
+    && rm /tmp/get-pip.py
