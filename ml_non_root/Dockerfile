@@ -7,8 +7,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-
     sudo && rm -rf /var/lib/apt/lists/*
 
 ARG UNAME=zaemyung
-ARG UID=1000
-ARG GID=1000
+ARG UID
+ARG GID
 RUN groupadd -g $GID $UNAME
 RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
 RUN echo $UNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$UNAME && chmod u=r,g=r,o= /etc/sudoers.d/$UNAME
