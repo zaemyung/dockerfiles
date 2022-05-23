@@ -42,7 +42,7 @@ RUN pip3 install --no-cache-dir \
         torch \
         torchvision \
         torchaudio \
-        -f https://download.pytorch.org/whl/cu113
+        --extra-index-url https://download.pytorch.org/whl/cu113
 
 RUN pip3 install --no-cache-dir \
         torch-scatter \
