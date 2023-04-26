@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:11.3.1-python3.9
+FROM zaemyung/cuda:11.7.1-python3.10
 
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
@@ -26,6 +26,7 @@ RUN pip3 install --no-cache-dir \
         kaleido \
         matplotlib \
         numpy \
+        networkx \
         pandas \
         plotly \
         pyaml \
@@ -42,19 +43,9 @@ RUN pip3 install --no-cache-dir \
         torch \
         torchvision \
         torchaudio \
-        --extra-index-url https://download.pytorch.org/whl/cu113
+        torchmetrics
 
 RUN pip3 install --no-cache-dir \
-        torch-scatter \
-        torch-sparse \
-        torch-cluster \
-        torch-spline-conv \
-        torch-geometric \
-        -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
-
-RUN pip3 install --no-cache-dir \
-        pytorch-lightning \
-        torchmetrics \
         transformers
 
 RUN pip3 install --no-cache-dir \
