@@ -20,16 +20,19 @@ RUN pip3 install --no-cache-dir --upgrade \
 
 RUN pip3 install --no-cache-dir \
         altair \
+        beautifulsoup4 \
+        boto3 \
         Cython \
         htbuilder \
         ipython \
         kaleido \
         matplotlib \
-        numpy \
         networkx \
+        numpy \
         pandas \
         plotly \
         pyaml \
+        python-dotenv \
         requests \
         scikit-learn \
         scipy \
@@ -56,3 +59,10 @@ RUN pip3 install --no-cache-dir \
         sentencepiece \
         sentsplit \
         spacy
+
+# Deep Graph Library (DGL)
+RUN pip3 install --no-cache-dir --find-links https://data.dgl.ai/wheels/cu117/repo.html \
+        dgl
+
+RUN pip3 install --no-cache-dir --find-links https://data.dgl.ai/wheels-test/repo.html \
+        dglgo

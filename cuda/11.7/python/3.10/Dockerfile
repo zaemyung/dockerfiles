@@ -4,7 +4,7 @@ LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
 
 ENV PYTHON_VERSION 3.10.11
-ENV CMAKE_VERSION 3.26.3
+ENV CMAKE_VERSION 3.26.4
 ENV TMUX_VERSION 3.3a
 ENV LANG=C.UTF-8
 
@@ -13,6 +13,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         dpkg-dev \
         gcc \
         git \
+        htop \
         libbluetooth-dev \
         libbz2-dev \
         libc6-dev \
@@ -28,6 +29,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         libsqlite3-dev \
         libssl-dev \
         make \
+        openssh-client \
         tk-dev \
         uuid-dev \
         vim \
