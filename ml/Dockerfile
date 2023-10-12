@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:11.7.1-python3.10
+FROM zaemyung/cuda:12.1-python3.11
 
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
@@ -11,6 +11,7 @@ ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 RUN apt-get update && apt-get install -y \
         libblas-dev \
         liblapack-dev \
+        graphviz \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir --upgrade \
@@ -42,13 +43,13 @@ RUN pip3 install --no-cache-dir \
         tqdm \
         wandb
 
-RUN pip3 install --no-cache-dir \
+RUN pip3 install --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir \
         torch \
         torchvision \
-        torchaudio \
-        torchmetrics
+        torchaudio
 
 RUN pip3 install --no-cache-dir \
+        torchmetrics \
         transformers
 
 RUN pip3 install --no-cache-dir \
@@ -60,9 +61,14 @@ RUN pip3 install --no-cache-dir \
         sentsplit \
         spacy
 
-# Deep Graph Library (DGL)
-RUN pip3 install --no-cache-dir --find-links https://data.dgl.ai/wheels/cu117/repo.html \
-        dgl
+RUN pip3 install --no-cache-dir \
+        torch_geometric
 
-RUN pip3 install --no-cache-dir --find-links https://data.dgl.ai/wheels-test/repo.html \
-        dglgo
+RUN pip3 install --no-cache-dir \
+        pyg_lib \
+        torch_scatter \
+        torch_sparse \
+        torch_cluster \
+        torch_spline_conv \
+        --find-links https://data.pyg.org/whl/torch-2.1.0+cu121.html
+
