@@ -7,23 +7,20 @@
 Build an image from the Dockerfile in the current directory and tag the image
 > `docker build -f Dockerfile -t {your_name/repo_name:tag} .`
 
-For building `zaemyung/ml_zae` image, pass `UNAME`, `UID`, and `GID` as:
+For building `zaemyung/ml_zae` image (non-root image), pass `UNAME`, `UID`, and `GID` as:
 > `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t zaemyung/ml_zae .`
-
-(Examples of Dockerfiles:
-[`zaemyung/cuda:11.3.1-python3.9`](https://github.com/zaemyung/dockerfiles/blob/master/cuda/11.3/python/3.9/Dockerfile), [`zaemyung/ml`](https://github.com/zaemyung/dockerfiles/blob/master/ml/Dockerfile), [`zaemyung/ml_non_root`](https://github.com/zaemyung/dockerfiles/blob/master/ml_non_root/Dockerfile))
 
 List all images that are locally stored with the Docker Engine
 > `docker image ls`
 
 Delete an image from the local image store
-> `docker image rm zaemyung/cuda:11.3.1-python3.9`
+> `docker image rm zaemyung/cuda:12.1-python3.11`
 
 For more info, refer to Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [image](https://docs.docker.com/engine/reference/commandline/image/) references
 
 ## Run
-Run an interactive container from the latest version of `zaemyung/ml` image; expose all GPUs to the container; name the running container "zaemyung-ml"; expose port 8888 externally and map to port 8888 inside the container; and map the host volume (`/home/zaemyung/corpora`) to to container path (`/corpora`)
-> `docker container run -it --gpus all --name zaemyung-ml -p 8888:8888 --volume /home/zaemyung/corpora:/corpora zaemyung/ml:latest`
+Run an interactive container from the latest version of `zaemyung/ml_zae` image; expose all GPUs to the container; name the running container "zaemyung-ml"; expose port 8888 externally and map to port 8888 inside the container; and map the host volume (`/space4/zaemyung/Development`) to container path (`/space4/zaemyung/Development`)
+> `docker container run -it --gpus all --name zaemyung-ml -p 8888:8888 --volume /space4/zaemyung/Development:/space4/zaemyung/Development zaemyung/ml_zae:latest`
 
 Show running containers
 > `docker container ls`
