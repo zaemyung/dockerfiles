@@ -102,3 +102,8 @@ Push an image to a registry
     - On your local machine, connect via `http://127.0.0.1:8888/lab?token=your_token`
   - (Or better yet, you can just use VSCode that does all this for you.)
   - For more details, take a look [here](https://towardsdatascience.com/how-to-run-jupyter-notebook-on-docker-7c9748ed209f).
+
+## Troubleshooting
+- load library failed: libnvidia-ml.so.1: cannot open shared object file
+  - `sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras`
+  - `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
