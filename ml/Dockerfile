@@ -20,10 +20,12 @@ RUN pip3 install --no-cache-dir --upgrade \
         wheel
 
 RUN pip3 install --no-cache-dir \
+        accelerate \
         altair \
         beautifulsoup4 \
         boto3 \
         Cython \
+        evaluate \
         htbuilder \
         ipython \
         kaleido \
@@ -33,11 +35,13 @@ RUN pip3 install --no-cache-dir \
         pandas \
         plotly \
         pyaml \
+        pygraphviz \
         python-dotenv \
         requests \
         scikit-learn \
         scipy \
         seaborn \
+        sentence-transformers \
         streamlit \
         tensorflow \
         tqdm \
@@ -70,5 +74,5 @@ RUN pip3 install --no-cache-dir \
         torch_sparse \
         torch_cluster \
         torch_spline_conv \
-        --find-links https://data.pyg.org/whl/torch-2.1.0+cu121.html
+        --find-links https://data.pyg.org/whl/torch-2.2.0+cu121.html
 

@@ -7,8 +7,8 @@
 Build an image from the Dockerfile in the current directory and tag the image
 > `docker build -f Dockerfile -t {your_name/repo_name:tag} .`
 
-For building `zaemyung/ml_non_root` image, modify the `UNAME` in the dockerfile accordingly, and build as:
-> `docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t zaemyung/ml_non_root .`
+For building `zaemyung/ml_zae` image, pass `UNAME`, `UID`, and `GID` as:
+> `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t zaemyung/ml_zae .`
 
 (Examples of Dockerfiles:
 [`zaemyung/cuda:11.3.1-python3.9`](https://github.com/zaemyung/dockerfiles/blob/master/cuda/11.3/python/3.9/Dockerfile), [`zaemyung/ml`](https://github.com/zaemyung/dockerfiles/blob/master/ml/Dockerfile), [`zaemyung/ml_non_root`](https://github.com/zaemyung/dockerfiles/blob/master/ml_non_root/Dockerfile))
