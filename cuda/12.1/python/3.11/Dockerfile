@@ -3,8 +3,8 @@ FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
 
-ENV PYTHON_VERSION 3.11.8
-ENV CMAKE_VERSION 3.29.2
+ENV PYTHON_VERSION 3.11.9
+ENV CMAKE_VERSION 3.29.6
 ENV TMUX_VERSION 3.4
 ENV LANG=C.UTF-8
 

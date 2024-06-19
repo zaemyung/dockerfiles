@@ -19,34 +19,6 @@ RUN pip3 install --no-cache-dir --upgrade \
         setuptools \
         wheel
 
-RUN pip3 install --no-cache-dir \
-        accelerate \
-        altair \
-        beautifulsoup4 \
-        boto3 \
-        Cython \
-        evaluate \
-        htbuilder \
-        ipython \
-        kaleido \
-        matplotlib \
-        networkx \
-        numpy \
-        pandas \
-        plotly \
-        pyaml \
-        pygraphviz \
-        python-dotenv \
-        requests \
-        scikit-learn \
-        scipy \
-        seaborn \
-        sentence-transformers \
-        streamlit \
-        tensorflow \
-        tqdm \
-        wandb
-
 RUN pip3 install --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir \
         torch \
         torchvision \
@@ -57,15 +29,6 @@ RUN pip3 install --no-cache-dir \
         transformers
 
 RUN pip3 install --no-cache-dir \
-        datasets \
-        nltk \
-        rouge_score \
-        sacrebleu \
-        sentencepiece \
-        sentsplit \
-        spacy
-
-RUN pip3 install --no-cache-dir \
         torch_geometric
 
 RUN pip3 install --no-cache-dir \
@@ -74,5 +37,50 @@ RUN pip3 install --no-cache-dir \
         torch_sparse \
         torch_cluster \
         torch_spline_conv \
-        --find-links https://data.pyg.org/whl/torch-2.2.0+cu121.html
+        --find-links https://data.pyg.org/whl/torch-2.3.0+cu121.html
+
+RUN pip3 install --no-cache-dir \
+        accelerate \
+        altair \
+        beautifulsoup4 \
+        boto3 \
+        chromadb \
+        Cython \
+        datasets \
+        evaluate \
+        guidance \
+        htbuilder \
+        ipython \
+        kaleido \
+        matplotlib \
+        natsort \
+        networkx \
+        nltk \
+        numpy \
+        pandas \
+        parsimonious \
+        plotly \
+        pyaml \
+        pygraphviz \
+        python-dotenv \
+        python-notification \
+        PyYAML \
+        regex \
+        requests \
+        rich \
+        rouge_score \
+        sacrebleu \
+        scikit-learn \
+        scipy \
+        seaborn \
+        sentence-transformers \
+        sentencepiece \
+        sentsplit \
+        spacy \
+        streamlit \
+        tensorflow \
+        tqdm \
+        tyro \
+        wandb \
+        zss
 
