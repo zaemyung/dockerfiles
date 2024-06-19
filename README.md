@@ -4,8 +4,8 @@
 - Here is also a good [Docker tutorial](https://www.youtube.com/watch?v=pg19Z8LL06w) on YouTube.
 
 ## Build
-Build an image from the Dockerfile in the current directory and tag the image
-> `docker build -f Dockerfile -t {your_name/repo_name:tag} .`
+Build an image from the Dockerfile in the current directory and tag the image, e.g.:
+> `docker build -f Dockerfile -t zaemyung/ml:latest .`
 
 For building `zaemyung/ml_zae` image (non-root image), pass `UNAME`, `UID`, and `GID` as:
 > `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t zaemyung/ml_zae .`
@@ -20,7 +20,7 @@ For more info, refer to Docker [build](https://docs.docker.com/engine/reference/
 
 ## Run
 Run an interactive container from the latest version of `zaemyung/ml_zae` image; expose all GPUs to the container; name the running container "zaemyung-ml"; expose port 8888 externally and map to port 8888 inside the container; and map the host volume (`/space4/zaemyung/Development`) to container path (`/space4/zaemyung/Development`)
-> `docker container run -it --gpus all --name zaemyung-ml -p 8888:8888 --volume /space4/zaemyung/Development:/space4/zaemyung/Development zaemyung/ml_zae:latest`
+> `docker container run -it --gpus all --shm-size='1gb' --name zaemyung-ml -p 8888:8888 --volume /space4/zaemyung/Development:/space4/zaemyung/Development zaemyung/ml_zae:latest`
 
 Show running containers
 > `docker container ls`
