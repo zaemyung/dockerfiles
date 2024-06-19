@@ -78,8 +78,8 @@ RUN pip3 install --no-cache-dir \
         sentsplit \
         spacy \
         streamlit \
-        tensorflow \
         tqdm \
+        trl \
         tyro \
         wandb \
         zss
