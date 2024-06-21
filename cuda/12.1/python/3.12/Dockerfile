@@ -3,13 +3,15 @@ FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
 
-ENV PYTHON_VERSION 3.11.9
+ENV PYTHON_VERSION 3.12.4
 ENV CMAKE_VERSION 3.29.6
 ENV TMUX_VERSION 3.4
 ENV LANG=C.UTF-8
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         bison \
+        build-essential \
+        ca-certificates \
         curl \
         dpkg-dev \
         gcc \
@@ -28,10 +30,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         libncurses5-dev \
         libncursesw5-dev \
         libreadline-dev \
+        libreadline6-dev \
         libsqlite3-dev \
         libssl-dev \
         make \
         openssh-client \
+        pkg-config \
         tk-dev \
         uuid-dev \
         vim \
