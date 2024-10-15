@@ -7,6 +7,7 @@
 Download the [Dockerfile](https://github.com/zaemyung/dockerfiles/blob/39d3ba38d37ce3f4ce8ab4a126cc4a71e105f8f9/ml/Dockerfile) from `zaemyung/ml` to the current directory. 
 Build an image from the Dockerfile in the current directory and tag the image, 
 > `docker build -f Dockerfile -t {your_name}/{your_container_name} .`
+
 e.g.:
 > `docker build -f Dockerfile -t zaemyung/ml:latest .`
 
