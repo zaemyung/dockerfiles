@@ -4,7 +4,7 @@
 - Here is also a good [Docker tutorial](https://www.youtube.com/watch?v=pg19Z8LL06w) on YouTube.
 
 ## Build
-Download the [Dockerfile](https://github.com/zaemyung/dockerfiles/blob/39d3ba38d37ce3f4ce8ab4a126cc4a71e105f8f9/ml/Dockerfile) from `zaemyung/ml` to the current directory. 
+Download the [Dockerfile](https://github.com/zaemyung/dockerfiles/blob/master/ml/Dockerfile) from `zaemyung/ml` to the current directory. 
 
 Build an image from the Dockerfile in the current directory and tag the image, 
 > `docker build -f Dockerfile -t {your_name}/{your_container_name} . `
@@ -12,7 +12,7 @@ Build an image from the Dockerfile in the current directory and tag the image,
 e.g.:
 > `docker build -f Dockerfile -t zaemyung/ml:latest . `
 
-For building [`zaemyung/ml_zae`](https://github.com/zaemyung/dockerfiles/blob/39d3ba38d37ce3f4ce8ab4a126cc4a71e105f8f9/ml_zae/Dockerfile) image (non-root image), pass `UNAME`, `UID`, and `GID` as:
+For building [`zaemyung/ml_zae`](https://github.com/zaemyung/dockerfiles/blob/master/ml_zae/Dockerfile) image (non-root image), pass `UNAME`, `UID`, and `GID` as:
 > `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t {your_container_name} . `
 
 List all images that are locally stored with the Docker Engine
