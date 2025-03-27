@@ -74,6 +74,32 @@ Push an image to a registry
 >
 > `docker push ghcr.io/myrepo/myimage:2.0` *(GitHub Packages)*
 
+
+## Keeping a script running on the server (using `tmux`)
+Start the container in detached mode. (The tail command keeps the container running)
+> `docker run -d --gpus all --name {container_name} --volume {host_volume_dir}:{docker_dir} {image_name} tail -f /dev/null`
+
+Start a new interactive bash shell
+> `docker exec -it {running_container_name} bash`
+
+Start a tmux session so it keeps running even if you disconnect from the server
+
+> `tmux new -s {your_session_name}`
+
+Now run the script you need to run. When the script is running. Press `Ctrl+B then D` to detach from the tmux session. Once you detach from the tmux session, tmux will keep your script running system-wide. 
+
+When you come back and reconnect, you can go back to that running script by reattaching the tmux session (preferably in a docker container, so running `docker exex -it {running_container_name} bash` first)
+> `tmux attach -t {your_session_name}`
+
+If you every lose track of all the session names, list them with 
+> `tmux list-sessions`
+
+Finally, if you want to kill a session, run: 
+> `tmux kill-session -t {your_session_name}`
+> This should produce an output like this:
+> 2025-02-05 04:55:53.742894
+
+
 ## Some info.
 - [Installation guide for Docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 - To enable GPUs (CUDA) in the container, it is sufficient to install appropriate NVIDIA driver in the host machine.
