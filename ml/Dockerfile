@@ -80,6 +80,7 @@ RUN pip3 install --no-cache-dir \
         sentence-transformers \
         sentencepiece \
         sentsplit \
+        sglang \
         spacy \
         streamlit \
         tqdm \
