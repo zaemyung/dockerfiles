@@ -1,4 +1,4 @@
-FROM zaemyung/cuda:12.1-python3.12
+FROM zaemyung/cuda:12.6-python3.12
 
 LABEL maintainer="zaemyung@gmail.com" \
       org.opencontainers.image.source="https://github.com/zaemyung/dockerfiles"
@@ -22,7 +22,7 @@ RUN pip3 install --no-cache-dir --upgrade \
         setuptools \
         wheel
 
-RUN pip3 install --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir \
+RUN pip3 install --index-url https://download.pytorch.org/whl/cu126 --no-cache-dir \
         torch \
         torchvision \
         torchaudio
@@ -40,11 +40,12 @@ RUN pip3 install --no-cache-dir \
         torch_sparse \
         torch_cluster \
         torch_spline_conv \
-        --find-links https://data.pyg.org/whl/torch-2.3.0+cu121.html
+        --find-links https://data.pyg.org/whl/torch-2.6.0+cu126.html
 
 RUN pip3 install --no-cache-dir \
         accelerate \
         altair \
+        autoawq \
         beautifulsoup4 \
         boto3 \
         chromadb \
