@@ -7,13 +7,13 @@
 Download the [Dockerfile](https://github.com/zaemyung/dockerfiles/blob/master/ml/Dockerfile) from `zaemyung/ml` to the current directory. 
 
 Build an image from the Dockerfile in the current directory and tag the image, 
-> `docker build -f Dockerfile -t {your_name}/{your_container_name} . `
+> `docker build -f Dockerfile -t {your_name}/{your_image_name} . `
 
 e.g.:
 > `docker build -f Dockerfile -t zaemyung/ml:latest . `
 
 For building [`zaemyung/ml_zae`](https://github.com/zaemyung/dockerfiles/blob/master/ml_zae/Dockerfile) image (non-root image), pass `UNAME`, `UID`, and `GID` as:
-> `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t {your_container_name} . `
+> `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t {your_image_name} . `
 
 List all images that are locally stored with the Docker Engine
 > `docker image ls`
@@ -25,7 +25,7 @@ For more info, refer to Docker [build](https://docs.docker.com/engine/reference/
 
 ## Run
 
-> `docker container run -it --gpus all --shm-size='1gb' --name  -p 8888:8888 --volume {host_volume}:{container_path} {your_container_name}`
+> `docker container run -it --gpus all --shm-size='1gb' --name {your_container_name} -p 8888:8888 --volume {host_volume}:{container_path} {your_image_name}`
 
 Run an interactive container from the latest version of `zaemyung/ml_zae` image; expose all GPUs to the container; name the running container "zaemyung-ml"; expose port 8888 externally and map to port 8888 inside the container; and map the host volume (`/space4/zaemyung/Development`) to container path (`/space4/zaemyung/Development`)
 
