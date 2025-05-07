@@ -13,7 +13,7 @@ e.g.:
 > `docker build -f Dockerfile -t zaemyung/ml:latest . `
 
 For building [`zaemyung/ml_zae`](https://github.com/zaemyung/dockerfiles/blob/master/ml_zae/Dockerfile) image (non-root image), pass `UNAME`, `UID`, and `GID` as:
-> `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -f Dockerfile -t {your_image_name} . `
+> `docker build --build-arg UNAME={your_name} --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t {your_name}/{your_image_name} . `
 
 List all images that are locally stored with the Docker Engine
 > `docker image ls`
